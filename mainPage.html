@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘의 급식 </title>
+    <style>
+body {
+  position:relative; left: 15%;
+            background-image: url("https://i.imgur.com/HVa4HE2.jpg"); background-repeat: repeat-y repeat-x;
+            font-family:굴림;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+}
+.body{
+  border: 10px solid rgb(255, 174, 0);
+  color: white;
+  font-weight: bolder;
+  background-color: rgb(5, 43, 0);
+  flex:1;
+}
+        /*button{
+            font-size: 10px;
+		    float:right;
+		    position:relative;
+			margin : auto;
+        }*/
+        .title{
+            line-height: 30%;
+            font-weight: bolder;
+            font-family: 굴림;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        table{margin-left: auto; margin-right: auto;border: 10px rgb(0, 0, 0); }
+table, td, th{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: rgb(255, 251, 228);
+  border-collapse: collapse;
+  
+  padding: center;
+  font-size: 20px;
+}
+th{height: auto;
+width: auto;}
+td{height: auto;
+width:auto}
+body, ul, li {
+  font-style: white;
+  font-weight: bolder;
+  margin: 0;
+  padding: 0;
+  list-style: none;  
+}
+
+a {
+  color: inherit;   
+  text-decoration: none; 
+}
+
+.side-bar > ul ul {
+  display: none;
+}
+
+:root {
+  --side-bar-width: 270px;
+  --side-bar-height: 90vh;
+}
+
+.side-bar {
+  position:fixed;  left:0%;
+  background-color: black;
+  opacity: 0.6;
+  width: var(--side-bar-width);
+  min-height: var(--side-bar-height);  
+  margin-top: calc((100vh - var(--side-bar-height)) / 2);  
+}
+
+
+.side-bar__icon-box {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.side-bar__icon-1 {
+  position: relative;
+  width: 23px;
+  height: 17px;
+  margin: 15px;
+  margin-top: 20px;
+  transition: .5s;
+}
+
+:root {
+  --side-bar__icon: .5s;
+}
+
+.side-bar__icon-1 > div {
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  background-color: white;
+  transition: all var(--side-bar__icon);
+}
+
+.side-bar__icon-1 > div:nth-of-type(1) {
+  top: 0;
+  width: auto;
+  left: 0;
+  right: 0;
+  transition: all var(--side-bar__icon), left calc(var(--side-bar__icon) / 2) calc(var(--side-bar__icon) / 2), right calc(var(--side-bar__icon) / 2) calc(var(--side-bar__icon) / 2), height calc(var(--side-bar__icon) / 2) 0s;
+}
+
+.side-bar__icon-1 > div:nth-of-type(2) {
+  top: 40%;
+  transform-origin:bottom left;
+}
+
+.side-bar__icon-1 > div:nth-of-type(3) {
+  top: 80%;
+  left: auto;
+  right: 0;
+  transform-origin:bottom right;
+}
+
+
+.side-bar:hover .side-bar__icon-1 {
+  transform: translate(-198px, 0);
+}
+
+.side-bar:hover .side-bar__icon-1 > div:nth-of-type(2) {
+  transform:rotate(45deg);
+  width: 70.5%;
+  height: 25%;
+}
+
+.side-bar:hover .side-bar__icon-1 > div:nth-of-type(3) {
+  top: 40%;
+  transform:rotate(-45deg);
+  width: 70.5%;
+  height: 25%;
+}
+
+.side-bar:hover .side-bar__icon-1 > div:nth-of-type(1) {
+  left: 41%;
+  right: 41%;
+  height: 100%;
+  transition: all var(--side-bar__icon), left calc(var(--side-bar__icon) / 2) 0s, right calc(var(--side-bar__icon) / 2) 0s, height calc(var(--side-bar__icon) / 2) calc(var(--side-bar__icon) / 2);
+}
+.side-bar ul > li > a {
+  display: block;
+  color: white;
+  font-size: 20px;
+  font-weight:lighter;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  transition: .5s;
+}
+.side-bar > ul > li {
+  position: relative;
+}
+.side-bar ul > li:hover > a {
+  background-color: #555;
+  border-bottom: 1px solid #999;
+}
+
+.side-bar > ul > li:hover > ul {
+  display: block;
+  position: absolute;
+  background-color: #888;
+  top: 0;      
+  left: 100%;     
+  width: 100%;    
+}
+
+.side-bar {
+  border-radius:15px;
+  transform: translate(calc(var(--side-bar-width) * -0.83), 0);
+  transition: .5s;
+}
+.side-bar:hover {
+  transform: translate(-20px, 0);
+}
+
+    </style>
+</head>
+<body >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <aside class="side-bar">
+      <section class="side-bar__icon-box">
+        <section class="side-bar__icon-1">
+          <div></div>
+          <div></div>
+          <div></div>
+        </section>
+      </section>
+      <ul>
+        <li>
+          <a href="#">D-Day counter</a>
+          <ul>
+            <li><a href="btest.html">수능</a></li>
+            <li><a href="stest.html">정기고사</a></li>
+            <li><a href="ntest.html">모의고사/학력평가</a></li>
+          </ul>
+        </li>
+        <li>
+            <a href="https://shinmok.sen.hs.kr/">School Web</a>
+          </li>
+        <li>
+          <a href="#">(없음)</a>
+          <ul>
+            <li><a href="#">-</a></li>
+            <li><a href="#">-</a></li>
+            <li><a href="#">-</a></li>
+            <li><a href="#">-</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="login.html">설정</a>
+        </li>
+        <li>
+          <a href="https://forms.gle/FegbUm9HuZS1HoT57">inquiry</a>
+        </li>
+      </ul>
+    </aside>
+    <div class="container">
+        <div class="title">
+            <p>4차 산업혁명시대를 주도할 편식하지 않는 융합인재 육성</p>
+            <hr>
+            <h1>신목고 급식식단</h1>
+            <p>(우)08018서울특별시 양천구 안양천로 739</p>
+            <pre>만든 사람: 2023 또진심 def(IT)        T.010-XXXX-XXXX           </pre>
+            <pre>(김민하,윤서연)</pre>
+            <hr>
+        </div>
+        <div class="body">
+          <br>
+          <br>
+            <script>
+                var today = new Date();   
+                var year = today.getFullYear(); // 년도
+                var month = today.getMonth() + 1;  // 월
+                var date = today.getDate();  // 날짜
+                document.write((month +"월"+date+"일").fontsize(6)+"<br><br>");
+            </script>
+            <h2>오늘의 급식 메뉴</h2>
+            <div id="menuOutput"></div></div>
+        <!-- 일주일 메뉴 -->
+        <br>
+        <div id="output"></div>
+      </div>
+      <br>
+      <table>
+        <tr>
+          <th>월요일</th>
+          <th>화요일</th>
+          <th>수요일</th>
+          <th>목요일</th>
+          <th>금요일</th>
+        </tr>
+        <tr>
+          <td id="mon"></td>
+          <td id="tue"></td>
+          <td id="wed"></td>
+          <td id="thu"></td>
+          <td id="fri"></td>
+        </tr>
+      </table>
+    </div>
+                    <script>
+                     var url = '설정저장 best.html';  // 가져올 데이터의 URL
+                      fetch('설정저장 best.html')
+    .then(response => {
+    if (!response.ok) {
+        throw new Error('데이터를 불러오는 중 오류가 발생했습니다.');
+    }
+    return response.json();
+})
+.then(function (responseData) {
+    localStorage.setItem('menus', responseData);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+            // localStorage에서 menus 데이터 가져오기
+            const storedMenus = localStorage.getItem("menus");
+            const menus = JSON.parse(storedMenus);
+
+            // 오늘 날짜 가져오기
+            const today = new Date();
+            const currentMonth = today.getMonth() + 1;
+            const currentDay = today.getDate();
+
+            // 오늘 메뉴 찾기
+            if (menus) {
+                const todayMenu = menus[currentMonth]?.[currentDay];
+                if (todayMenu) {
+                    // 메뉴를 화면에 표시하거나 처리하는 작업을 수행할 수 있습니다.
+                    const menuOutput = document.createElement("pre");
+                    menuOutput.textContent = todayMenu;
+                    menuOutput.style.fontSize = "25px"; 
+                    menuOutput.style.lineHeight="75px";
+                    menuOutput.innerHTML = todayMenu;
+                    document.getElementById("menuOutput").appendChild(menuOutput);
+                } else {
+                    console.log("오늘 메뉴가 없습니다.");
+                }
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+    // localStorage에서 menus 데이터 가져오기
+    const storedMenus = localStorage.getItem("menus");
+    const menus = JSON.parse(storedMenus);
+
+    // 오늘 날짜 가져오기
+    const today = new Date();
+    const currentMonth = today.getMonth() + 1;
+    const currentDate = today.getDate();
+    const currentDayOfWeek = today.getDay(); // 일요일(0)부터 시작
+
+    // 현재 주차와 해당 주의 월요일 날짜 계산
+    const weekNumber = Math.ceil(currentDate / 7);
+    const daysUntilMonday = (7 - currentDayOfWeek -6) % 7; // 월요일까지 남은 일수
+    const monDate = currentDate + daysUntilMonday;
+
+    // 요일별 메뉴 표시
+    for (let day = 0; day < 5; day++) {
+        const date = monDate + day;
+        const dayName = getDayName(day);
+
+        const menu = menus[currentMonth]?.[date] || "-";
+
+        const menuOutput = document.getElementById(dayName.toLowerCase());
+        const preTag = document.createElement("pre");
+        preTag.textContent = `${menu}`;
+        menuOutput.appendChild(preTag);
+    }
+});
+
+function getDayName(dayNumber) {
+    const days = ["mon", "tue", "wed", "thu", "fri"];
+    return days[dayNumber];
+}
+
+
+
+
+
+    function calculateWeek() {
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth();
+            const currentDateOfMonth = currentDate.getDate();
+
+            let date = new Date(currentYear, currentMonth, currentDateOfMonth);
+
+            const weekNumber = Math.ceil(currentDateOfMonth / 7);
+
+            const outputElement = document.getElementById('output');
+            outputElement.innerHTML = `${currentMonth + 1}월${weekNumber}주`;
+
+        }
+        calculateWeek();
+        //주차 계산
+
+</script>
+</body>
+</html>
